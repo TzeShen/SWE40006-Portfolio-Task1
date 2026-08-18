@@ -1,0 +1,13 @@
+PackageIdentifier: Task1.4
+PackageVersion: 1.0.0.0
+PackageName: Portfolio1
+Publisher: TzeShen
+License: MIT
+ShortDescription: Task for 1.4 Portfolio 1.
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://github.com/TzeShen/SWE40006-Portfolio-Task1/releases/download/v1.0.0.0/SampleAppSetup.msi
+    InstallerType: msi
+    InstallerSha256: a813b418b9a0f3672822e27cdcad677ef7f28ddd654462f411b00d80784da6ff
+ManifestType: singleton
+ManifestVersion: 1.6.0
