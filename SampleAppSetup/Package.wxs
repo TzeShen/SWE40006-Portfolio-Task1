@@ -1,0 +1,63 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<!-- Defining the main properties of the installer -->
+	<Package Name="Portfolio1" Manufacturer="Tze Shen" Version="1.0.0.0" UpgradeCode="{8D7BD38E-DBF2-4ED1-B1BB-AA54D6D80DC6}">
+		<MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+		<!-- The main feature that links to our application files -->
+		<Feature Id="MainAppFeature">
+			<ComponentGroupRef Id="AppFiles" />
+		</Feature>
+	</Package>
+
+	<Fragment>
+		<!-- 1. Defining the installation path (C:\Program Files\Portfolio1) -->
+		<StandardDirectory Id="ProgramFiles64Folder">
+			<Directory Id="InstallationFolder" Name="Portfolio1" />
+		</StandardDirectory>
+
+		<!-- 2. Grouping the executable and the required DLL dependencies -->
+		<ComponentGroup Id="AppFiles" Directory="InstallationFolder">
+			<!-- Core Executable and Config -->
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)Portfolio1.exe" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)Portfolio1.exe.config" />
+			</Component>
+
+			<!-- External Libraries -->
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)Newtonsoft.Json.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)Serilog.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)Serilog.Sinks.Console.dll" />
+			</Component>
+
+			<!-- System Dependencies for Serilog -->
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Buffers.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Diagnostics.DiagnosticSource.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Memory.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Numerics.Vectors.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Runtime.CompilerServices.Unsafe.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Threading.Channels.dll" />
+			</Component>
+			<Component>
+				<File Source="$(var.Portfolio1.TargetDir)System.Threading.Tasks.Extensions.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
